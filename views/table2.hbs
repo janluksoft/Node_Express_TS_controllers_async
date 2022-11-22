@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/default.css"/> 
+    <link rel="stylesheet" href="../css/style_fold.css"/> 
+    <link rel="stylesheet" href="../css/button.css"/> 
+    <title>{{zPageTitle}}</title>
+</head>
+<body>
+  {{> navig }}
+
+  <div class="start">
+
+  <div class="start">
+ 
+    <div class="box_right" style='float: right;'>
+      <table>
+        <tr>
+          <td>HBS<br/>template<br/>engine</td>
+          <td><img src='../images/Handlebars.png' width='100'/></td>
+        </tr>
+      </table>
+    </div>
+
+   <div class="main">{{zPageTitle}}</div>
+
+    {{#if zbIsTable }}
+    {{else}}
+
+      <h2>The Node Express TS app with the controller structure.</h2>
+
+      <p style="font-size: 12pt; font-weight:bold;">The idea of a web application</p>
+      <p>
+        This web application demonstrates the use of GET and POST methods 
+        by making browser requests to a node server and vice versa.
+        The web-app is written entirely in TypeScript and runs asynchronously. The web-app 
+        is divided into folders for input files: [.ts files in the /src folder] and output 
+        files: [.js files in the /dist folder].
+      </p>
+
+      <p style="font-size: 12pt;">This application has:</p>
+      <ul>
+        <li>Express framework;</li>
+        <li>TypeScript language;</li>
+        <li>Asynchronous work of the application (async/await);</li>
+        <li>Built-in middleware: express.static;</li>
+        <li>Partials (layouts) of header, footer</li>
+        <li>Hbs template engine;</li>
+        <li>Helpers: [#each], [#if];</li>
+        <li>Multi-page portal - switching from the menu;</li>
+        <li>Request handling: Get, Post</li>
+        <li>Configured tsconfig.json file</li>
+        <li>Debug enabled on the node server side (.map files);</li>
+        <li>Folder [disc] of compiled .js files</li>
+        <li>Division into files .ts structure in [src] folder:</li>
+        <ul>
+          <li>Server;</li>
+          <li>App_hbs;</li>
+          <li>Routers;</li>
+          <li>Controller applications (POST method);</li>
+          <li>Controller pages (GET method);</li>
+          <li>Data class;</li>
+        </ul>
+      </ul>
+      
+      <p style="font-size: 12pt; font-weight:bold;">Operation of the web application</p>
+      <p>
+        This application has a good file structure for separating tasks in the back-end: app, router, controllers. 
+        Many websites are used in large web-apps. Handling multiple pages in one file - causes confusion and lack of order. 
+        Therefore, tasks are divided into different folders and files. GET commands are handled by [\src\controllers\controller.pages.ts], 
+        POST by [src/controllers/controller.app.ts] and separation is handled by: \src\routes\routerts.ts.      
+      </p>
+
+      <p>
+        Pages are switched via the Get method. The router finds the correct EndPoint and based on it, renders the page to the browser.
+        On Log page - the button sends login data to the Node server using the POST method. The server analyzes these 
+        login details. If the data is correct - the Node will return a table for display.
+ 
+      </p>
+
+    {{/if}}
+
+    <br/>
+    <p style="color:#4e7cc8;">The page was loaded {{zCount}} times. Reload it</p>
+
+  </div>
+
+  {{> footer}}
+
+</body>
+</html>

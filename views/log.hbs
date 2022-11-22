@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/default.css"/> 
+    <link rel="stylesheet" href="../css/style_fold.css"/> 
+    <link rel="stylesheet" href="../css/button.css"/> 
+    <title>{{zPageTitle}}</title>
+</head>
+<body>
+  {{> navig }}
+
+  <div class="start">
+
+    <div class="main">{{zPageTitle}} </div>
+    <p style="font-size: 13px;">On this page - the button sends login data to the Node server 
+      using the POST method. <br/>
+      The server analyzes these login details. If the data is correct 
+      - the Node will return a table for display.
+      </p>
+
+  	<!-- <div class="box_main" style="width: 440px;"> -->
+  	<form action="/applications" method="POST" class="box_main" style="width: 440px;">
+      <div style="color:#2b4797; padding: 1px 16px 6px 10px;"><b>Login to [Person] table</b></div>
+      <table>
+        <tr><td>Host:</td><td><input id="sidHost" name="nHost" value="localhost" class="in-txt" type="text"/></td>
+            <td>User:</td><td><input id="sidUser" name="nUser" value="Mark" class="in-txt" type="text"/></td>
+        </tr>
+
+        <tr><td>Database:</td><td><input id="sidDataBase" name="nDataBase" value="dbMark" class="in-txt" type="text"/></td>
+            <td>Pass:</td><td><input id="sidPass" name="nPass" value="abcde" class="in-txt" type="password"/></td>
+        </tr>
+
+        <tr><td>Port:</td><td><input id="sidPort" name="nPort" value="5432" class="in-txt" type="text"/></td>
+            <td></td><td><button class="button blue_dark medium" type="submit" >Connect to table</button></td>
+        </tr>
+
+      </table>
+    </form>
+
+    {{#if zbIsStart}}
+      <p>Start page. Enter the correct login and press the button.<br/>
+         If the data logging is correct, the node server will show you a table with the data.
+      </p>
+
+    {{else if zbIsTable}}
+      <p>Data login is Ok. This is a table from the node server</p>
+
+      <table>
+      <tr>
+        <td>
+         <div class="table-responsive">
+          <table class="fold-table" style="width: 320px;">
+            <thead>
+                <tr> <th>Name</th><th>Sex</th><th>Age</th> </tr>
+            </thead>
+            <tbody>
+              {{#each ztNames}}
+                <tr class="view">
+                    <td>{{this.name}}</td><td>{{this.sex}}</td><td>{{this.age}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+         </div>
+
+        </td>
+        <td>
+            <ul class="people_list">
+            {{#each ztNames}}
+                <li>{{this.name}} ({{this.sex}})</li>
+            {{/each}}
+            </ul>
+        </td>
+      </tr>
+      </table>
+    {{else}}
+      
+      <p>The login details are incorrect. The node server cannot display the data table.</p>
+    {{/if}}
+
+    <p style="font-size: 13px;">The page was loaded ({{zCount}}) times</p>
+
+  </div>
+
+  {{> footer}}
+</body>
+</html>
